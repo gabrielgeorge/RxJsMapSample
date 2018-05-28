@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver, ComponentFactory } from '@angular/core';
-import { Observable, fromEvent, interval, Subject, Subscription } from 'rxjs';
+import { Component } from '@angular/core';
+import { Observable, interval, Subject, Subscription } from 'rxjs';
 
-import { switchMap, delay, exhaustMap, mergeMap, take, concatMap } from 'rxjs/operators';
+import { switchMap, exhaustMap, mergeMap, take, concatMap } from 'rxjs/operators';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,7 +10,7 @@ import { switchMap, delay, exhaustMap, mergeMap, take, concatMap } from 'rxjs/op
 export class AppComponent {
   obs = new Subject();
   values = [];
-  mapType: 'mergeMap' | 'concatMap' | 'exhaustMap' = 'mergeMap';
+  mapType: 'mergeMap' | 'concatMap' | 'exhaustMap' | 'switchMap' = 'mergeMap';
 
   mapTitle = 'Merge Map';
   observable$: Subscription;
@@ -52,6 +52,21 @@ export class AppComponent {
       this.observable$ = this.obs
         .pipe(
           exhaustMap(event => {
+            return this.interval$.pipe(take(5));
+          })
+        )
+        .subscribe(num => {
+          console.log(num);
+          this.values.push(num);
+        });
+    } else if (this.mapType === 'switchMap') {
+      this.mapTitle = 'Switch Map';
+      this.observable$.unsubscribe();
+      this.values = [];
+
+      this.observable$ = this.obs
+        .pipe(
+          switchMap(event => {
             return this.interval$.pipe(take(5));
           })
         )

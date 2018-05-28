@@ -8,6 +8,7 @@ This app provides sample for:
 * MergeMap
 * ConcatMap
 * ExhaustMap
+* SwitchMap
 
 by using the basic interval inner observable to show emmited value.
 
