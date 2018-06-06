@@ -10,16 +10,16 @@ import { switchMap, exhaustMap, mergeMap, take, concatMap } from 'rxjs/operators
 export class AppComponent {
   obs = new Subject();
   values = [];
-  mapType: 'mergeMap' | 'concatMap' | 'exhaustMap' | 'switchMap' = 'mergeMap';
+  mapType: 'mergeMap' | 'concatMap' | 'exhaustMap' | 'switchMap' = 'switchMap';
 
-  mapTitle = 'Merge Map';
+  mapTitle = 'Switch Map';
   observable$: Subscription;
   interval$ = interval(1000);
 
   constructor() {
     this.observable$ = this.obs
       .pipe(
-        mergeMap(event => {
+        switchMap(event => {
           return this.interval$.pipe(take(5));
         })
       )
