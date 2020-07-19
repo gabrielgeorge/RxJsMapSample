@@ -15,4 +15,4 @@ by using the basic interval inner observable to show emmited value.
 
 ### Feedbacks
 
-If you have any feedback or any suggestions, please do not hesitate to contact me at gabriel@startcoding.app or on twitter at [@geo_ge](https://twitter.com/geo_ge)
+If you have any feedback or any suggestions, please do not hesitate to contact me at gabriel@devzilla.io or on twitter at [@geo_ge](https://twitter.com/geo_ge)
