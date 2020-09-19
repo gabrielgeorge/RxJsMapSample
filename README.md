@@ -1,6 +1,7 @@
 # RxJsMapSample
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.1.
+
 This is blogged on: https://devzilla.io/different-rxjs-maps/
 
 ## Simple App to show difference between RxJs maps
